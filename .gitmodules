@@ -1,0 +1,6 @@
+[submodule ".zim"]
+	path = .zim
+	url = https://github.com/zimfw/zimfw.git
+[submodule "/Users/pierremarchand/.zim"]
+	path = /Users/pierremarchand/.zim
+	url = https://github.com/zimfw/zimfw.git
