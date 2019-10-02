@@ -48,14 +48,4 @@ git config --global diff.tool "vscode"
 git config --global mergetool.cmd 'code --wait $MERGED'
 git config --global difftool.cmd 'code --wait --diff $LOCAL $REMOTE'
 
-# Partage folder
-mkdir -p Partage
-cd Partage
-
-## Metropolis beamer style
-git clone https://github.com/matze/mtheme.git
-
-## Personal webpage
-git clone git@github.com:PierreMarchand20/personal_webpage.git
-
 exit 0
