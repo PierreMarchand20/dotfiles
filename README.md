@@ -1,4 +1,4 @@
-# dotfiles
+# dotfiles [![Build Status](https://travis-ci.com/PierreMarchand20/dotfiles.svg?branch=master)](https://travis-ci.com/PierreMarchand20/dotfiles)
 
 ## Installation
 
@@ -17,6 +17,7 @@ Here's what is the bootstrap is doing:
 ## What remains to do
 
 - Set email accounts and ICloud
+- Set email in .gitconfig
 - Set zsh as your default shell
 
 ```bash
