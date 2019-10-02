@@ -9,7 +9,7 @@
 
 Here's what is the bootstrap is doing:
 
-- Install [zim](https://github.com/zimfw/zimfw), an alternative to usual bash
+- Install zsh, an alternative to usual bash with [zim](https://github.com/zimfw/zimfw) as a plugin manager
 - Install all the packages/apps from `.Brewfile` using [Homebrew](https://brew.sh)
 - Set all kinds of default behaviors in macOS
 - Set VSCode as your main tool for diff and merge
