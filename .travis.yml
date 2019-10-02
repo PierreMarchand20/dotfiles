@@ -5,5 +5,4 @@ install:
   - brew install yadm
 script:
   - yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git
-  - yadm stash show -p
   - yadm bootstrap #to test idempotence
