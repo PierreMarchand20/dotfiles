@@ -33,6 +33,7 @@ cask 'nordvpn'
 cask 'libreoffice'
 cask 'paraview'
 cask 'tunnelblick'
+cask 'skype'
 
 
 # Fonts
