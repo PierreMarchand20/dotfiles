@@ -34,7 +34,7 @@ cask 'libreoffice'
 cask 'paraview'
 cask 'tunnelblick'
 cask 'skype'
-
+cask 'kap'
 
 # Fonts
 cask 'font-fira-code' 
