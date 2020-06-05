@@ -1,10 +1,5 @@
 language: minimal
 
-install:
-  - brew update
-  - brew install yadm
-
-
 # Compiler selection
 matrix:
   include:
@@ -18,14 +13,26 @@ matrix:
     - os: linux
       dist: xenial
       group: travis_latest
-      install: 
-        - mkdir -p ${HOME}/.local && export PATH=${HOME}/.local:$PATH
-        - curl -o yadm https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/yadm
-        - mv yadm ${HOME}/.local/
-        - chmod a+x ${HOME}/.local/yadm
+      name: "Ubuntu"
+      env: TESTING_ENV=ubuntu_mpich
+
+    - os: linux
+      dist: xenial
+      group: travis_latest
+      name: "Debian"
+      env: TESTING_ENV=debian_mpich
 
 
+
+install: 
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker pull pierremarchand/htool_testing_environments:${TESTING_ENV}
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker run -itd --name ${TESTING_ENV} pierremarchand/htool_testing_environments:${TESTING_ENV}
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker exec -it ${TESTING_ENV} bash -c 'apt install curl'
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker exec -it ${TESTING_ENV} bash -c 'curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x /usr/local/bin/yadm'
+  
 
 script:
-  - yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git
-  - yadm bootstrap #to test idempotence
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker exec -it ${TESTING_ENV} bash -c 'yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git'
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker exec -it ${TESTING_ENV} bash -c 'yadm bootstrap'
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; yadm bootstrap #to test idempotence
