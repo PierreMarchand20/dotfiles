@@ -28,14 +28,14 @@ matrix:
 
 
 install: 
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker pull pierremarchand/htool_testing_environments:${TESTING_ENV}
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker run -itd --name ${TESTING_ENV} pierremarchand/htool_testing_environments:${TESTING_ENV}
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker exec -it ${TESTING_ENV} bash -c 'apt install curl'
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker exec -it ${TESTING_ENV} bash -c 'curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x /usr/local/bin/yadm'
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker pull pierremarchand/htool_testing_environments:${TESTING_ENV}; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker run -itd --name ${TESTING_ENV} pierremarchand/htool_testing_environments:${TESTING_ENV}; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker exec -it ${TESTING_ENV} bash -c 'apt install curl'; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker exec -it ${TESTING_ENV} bash -c 'curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x /usr/local/bin/yadm'; fi
   
 
 script:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker exec -it ${TESTING_ENV} bash -c 'yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git'
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker exec -it ${TESTING_ENV} bash -c 'yadm bootstrap'
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; yadm bootstrap #to test idempotence
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker exec -it ${TESTING_ENV} bash -c 'yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git'; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; docker exec -it ${TESTING_ENV} bash -c 'yadm bootstrap'; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git; fi
+  - if [ "$TRAVIS_OS_NAME" == "osx" ]; yadm bootstrap; fi #to test idempotence
