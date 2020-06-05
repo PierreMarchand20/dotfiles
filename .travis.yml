@@ -30,6 +30,7 @@ matrix:
 install: 
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then docker pull pierremarchand/htool_testing_environments:${TESTING_ENV}; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then docker run -itd --name ${TESTING_ENV} pierremarchand/htool_testing_environments:${TESTING_ENV}; fi
+  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then docker exec -it ${TESTING_ENV} bash -c 'apt-get update'; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then docker exec -it ${TESTING_ENV} bash -c 'apt install curl'; fi
   - if [ "$TRAVIS_OS_NAME" == "linux" ]; then docker exec -it ${TESTING_ENV} bash -c 'curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x /usr/local/bin/yadm'; fi
   
