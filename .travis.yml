@@ -13,12 +13,13 @@ matrix:
       install: 
         - brew update
         - brew install yadm
+        - brew unlink python@2
 
     - os: linux
       dist: xenial
       group: travis_latest
       install: 
-        - curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm
+        - "curl -fLo /usr/local/bin/yadm \"https://github.com/TheLocehiliosan/yadm/raw/master/yadm\""
         - chmod a+x /usr/local/bin/yadm
 
 
