@@ -22,7 +22,7 @@ matrix:
         - mkdir -p ${HOME}/.local && export PATH=${HOME}/.local:$PATH
         - curl -o yadm https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/yadm
         - mv yadm ${HOME}/.local/
-        - chmod a+x ${HOME}/.local/bin/yadm
+        - chmod a+x ${HOME}/.local/yadm
 
 
 
