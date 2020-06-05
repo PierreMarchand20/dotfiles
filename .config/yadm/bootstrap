@@ -4,37 +4,30 @@ set -e
 # Because Git submodule commands cannot operate without a work tree, they must
 # be run from within $HOME (assuming this is the root of your dotfiles)
 cd "$HOME"
-echo "Init submodules"
-yadm submodule update --recursive --init
-
-# Check for Homebrew
-if test ! $(which brew)
-then
-    echo "  Installing Homebrew for you."
-
-    # Install the correct homebrew for each OS type
-    if test "$(uname)" = "Darwin"
-    then
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
-    then
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
-    fi
-
-fi
-
-# Install everything in Brewfiles
-if [ -f "$HOME/.Brewfile" ]; then
-    echo "Updating homebrew bundle"
-    brew bundle --global --verbose
-fi
 
 
-# Sensible macOS defaults 
 if test "$(uname)" = "Darwin"
 then
+    if test ! $(which brew)
+    then
+        echo "  Installing Homebrew for you."
+        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+    echo "Updating homebrew bundle"
+    brew bundle --global --verbose
     echo "Applying preferences for macos"
     ./.macos
+elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
+then
+    echo "Installing zsh and powerline fonts"
+    apt install zsh fonts-powerline
+    chsh -s /usr/bin/zsh root
+fi
+
+
+if [ ! -d ".zim" ]; then
+    echo "Installing zim"
+    curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
 fi
 
 # Setup git

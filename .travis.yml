@@ -1,9 +1,27 @@
-os: osx
 language: minimal
 
 install:
   - brew update
   - brew install yadm
+
+
+# Compiler selection
+matrix:
+  include:
+    # Tests on osx
+    - os: osx
+      install: 
+        - brew update
+        - brew install yadm
+
+    - os: linux
+      dist: xenial
+      group: travis_latest
+      install: 
+        - curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x /usr/local/bin/yadm
+
+
+
 script:
   - yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git
   - yadm bootstrap #to test idempotence
