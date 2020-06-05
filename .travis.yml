@@ -1,5 +1,8 @@
 language: minimal
 
+services:
+  - docker
+
 # Compiler selection
 matrix:
   include:
