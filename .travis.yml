@@ -21,7 +21,7 @@ matrix:
       install: 
         - mkdir -p ${HOME}/.local && export PATH=${HOME}/.local:$PATH
         - touch ${HOME}/.local/test
-        - curl -fLo ${HOME}/.local/bin/yadm "https://github.com/TheLocehiliosan/yadm/raw/master/yadm"
+        - curl -fLo ${HOME}/.local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm
         - chmod a+x ${HOME}/.local/bin/yadm
 
 
