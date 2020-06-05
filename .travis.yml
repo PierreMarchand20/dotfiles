@@ -20,7 +20,7 @@ matrix:
       group: travis_latest
       install: 
         - mkdir -p ${HOME}/.local && export PATH=${HOME}/.local:$PATH
-        - curl https://github.com/TheLocehiliosan/yadm/raw/master/yadm
+        - curl -o yadm https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/yadm
         - mv yadm ${HOME}/.local/
         - chmod a+x ${HOME}/.local/bin/yadm
 
