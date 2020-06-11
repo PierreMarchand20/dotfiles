@@ -26,13 +26,10 @@ then
 fi
 
 
-if [ ! -d ".zim" ]; then
-    echo "Installing zim"
-    mkdir -p .zim
-    export ZIM_HOME=${HOME}/.zim
-    curl -Lo ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
-    zsh -c "source ~/.zim/zimfw.zsh install"
-fi
+# Setup zim
+export ZIM_HOME=${HOME}/.zim
+zsh -c "source ~/.zim/zimfw.zsh install"
+
 
 # Setup git
 git config --global user.name 'Pierre Marchand'
