@@ -9,7 +9,7 @@ matrix:
     # Tests on osx
     - os: osx
       install: 
-        - brew update
+        - brew update-reset && brew update
         - brew install yadm
         - brew unlink python@2
 
