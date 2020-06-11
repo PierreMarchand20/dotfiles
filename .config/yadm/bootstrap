@@ -27,7 +27,10 @@ fi
 
 if [ ! -d ".zim" ]; then
     echo "Installing zim"
-    curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+    mkdir -p .zim
+    export ZIM_HOME=${HOME}/.zim
+    curl -Lo ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+    zsh -c "source ~/.zim/zimfw.zsh install"
 fi
 
 # Setup git
