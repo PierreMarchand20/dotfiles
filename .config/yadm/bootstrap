@@ -28,7 +28,7 @@ fi
 
 # Setup zim
 export ZIM_HOME=${HOME}/.zim
-zsh -c "source ~/.zim/zimfw.zsh install"
+zsh ${HOME}/.zim/zimfw.zsh install
 
 
 # Setup git
