@@ -15,6 +15,7 @@ brew 'hugo'
 brew 'git'
 brew 'open-mpi'
 brew 'zsh'
+brew 'java11'
 
 
 # Applications
@@ -24,8 +25,6 @@ cask 'mactex'
 cask 'spectacle'
 cask 'iterm2'
 cask 'whatsapp'
-cask 'signal'
-cask 'adoptopenjdk11'
 cask 'jabref'
 cask 'visual-studio-code'
 cask 'presentation'
