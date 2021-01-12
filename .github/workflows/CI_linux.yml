@@ -21,19 +21,16 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dist: ["ubuntu_mpich", "debian_mpich"]
+        container: ["pierremarchand/scientific_development_env:ubuntu_mpich", "pierremarchand/scientific_development_env:debian_mpich"]
+        
+    container: ${{ matrix.container }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-
       # Runs a set of commands using the runners shell
-      - name: Run docker containers
-        run: |
-          docker pull pierremarchand/scientific_development_env:${{ matrix.dist }}
-          docker run -i --name ${{ matrix.dist }} pierremarchand/scientific_development_env:${{ matrix.dist }}
       - name: Run tests
         run: |
-          docker exec -i ${{ matrix.dist }} bash -c 'yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git' 
-          docker exec -i ${{ matrix.dist }} bash -c 'yadm bootstrap'
+          yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git
+          yadm bootstrap
