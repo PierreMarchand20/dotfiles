@@ -3,14 +3,17 @@ language: minimal
 services:
   - docker
 
+addons:
+  homebrew:
+    packages:
+    - yadm
+
 # Compiler selection
 matrix:
   include:
     # Tests on osx
     - os: osx
       install: 
-        - brew update-reset && brew update
-        - brew install yadm
         - brew unlink python@2
 
     - os: linux
