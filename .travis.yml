@@ -3,20 +3,9 @@ language: minimal
 services:
   - docker
 
-addons:
-  homebrew:
-    packages:
-    - yadm
-    update: true
-
 # Compiler selection
 matrix:
   include:
-    # Tests on osx
-    - os: osx
-      install: 
-        - brew unlink python@2
-
     - os: linux
       dist: xenial
       group: travis_latest
@@ -32,12 +21,10 @@ matrix:
 
 
 install: 
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then docker pull pierremarchand/scientific_development_env:${TESTING_ENV}; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then docker run -itd --name ${TESTING_ENV} pierremarchand/scientific_development_env:${TESTING_ENV}; fi
+  - docker pull pierremarchand/scientific_development_env:${TESTING_ENV}
+  -mdocker run -itd --name ${TESTING_ENV} pierremarchand/scientific_development_env:${TESTING_ENV}
   
 
 script:
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then docker exec -it ${TESTING_ENV} bash -c 'yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git'; fi
-  - if [ "$TRAVIS_OS_NAME" == "linux" ]; then docker exec -it ${TESTING_ENV} bash -c 'yadm bootstrap'; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git; fi
-  - if [ "$TRAVIS_OS_NAME" == "osx" ]; then travis_wait yadm bootstrap; fi #to test idempotence
+  - docker exec -it ${TESTING_ENV} bash -c 'yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git'
+  - docker exec -it ${TESTING_ENV} bash -c 'yadm bootstrap'
