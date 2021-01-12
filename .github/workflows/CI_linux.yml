@@ -32,8 +32,8 @@ jobs:
       - name: Run docker containers
         run: |
           docker pull pierremarchand/scientific_development_env:${{ matrix.dist }}
-          docker run -itd --name ${{ matrix.dist }} pierremarchand/scientific_development_env:${{ matrix.dist }}
+          docker run -i --name ${{ matrix.dist }} pierremarchand/scientific_development_env:${{ matrix.dist }}
       - name: Run tests
         run: |
-          docker exec -it ${{ matrix.dist }} bash -c 'yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git' 
-          docker exec -it ${{ matrix.dist }} bash -c 'yadm bootstrap'
+          docker exec -i ${{ matrix.dist }} bash -c 'yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git' 
+          docker exec -i ${{ matrix.dist }} bash -c 'yadm bootstrap'
