@@ -1,4 +1,4 @@
-# dotfiles [![Build Status](https://travis-ci.com/PierreMarchand20/dotfiles.svg?branch=master)](https://travis-ci.com/PierreMarchand20/dotfiles)
+# dotfiles [![CI](https://github.com/PierreMarchand20/dotfiles/workflows/CI/badge.svg)](https://github.com/PierreMarchand20/dotfiles/actions)
 
 ## Installation
 
