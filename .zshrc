@@ -131,6 +131,12 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 
 ##### Personal options
+export PATH=$PATH:~/Partage/scientific_computing/FreeFem-sources-debug/src/mpi
+export PATH=$PATH:~/Partage/scientific_computing/FreeFem-sources-debug/src/nw
+
+if [ -d /opt/intel/oneapi/ ]; then
+  source /opt/intel/oneapi/setvars.sh  >/dev/null
+fi
 # autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=241'
 
