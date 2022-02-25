@@ -54,11 +54,7 @@ jobs:
         run: |
           cd ${HOME}
           yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git
-          pwd
-          ls -a
-          ls .config
-          ls .config/yadm
           yadm bootstrap
       - name: Run test
         run: |
-          echo $0
+          zsh -c "source ~/.zshrc"
