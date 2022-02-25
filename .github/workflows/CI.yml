@@ -11,7 +11,7 @@ on:
     branches: [master]
 
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:bootstrap
+  workflow_dispatch:
   # # Run tests every month
   # schedule:
   #   - cron: '0 0 1 * *'
