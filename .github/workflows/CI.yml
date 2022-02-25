@@ -38,6 +38,7 @@ jobs:
           yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git
           yadm bootstrap
       - name: Run test
+        shell: /usr/bin/zsh{0}
         run: |
           echo $0
 
@@ -53,6 +54,10 @@ jobs:
       - name: Run bootstrap
         run: |
           yadm clone --bootstrap https://github.com/PierreMarchand20/dotfiles.git
+          pwd
+          ls -a
+          ls .config
+          ls .config/yadm
           yadm bootstrap
       - name: Run test
         run: |
