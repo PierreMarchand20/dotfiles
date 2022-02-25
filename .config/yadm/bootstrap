@@ -21,14 +21,9 @@ elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
 then
     echo "Installing zsh and powerline fonts"
     apt update
-    apt install -y  --no-install-recommends zsh fonts-powerline
+    apt install -y  --no-install-recommends zsh fonts-powerline curl ca-certificates
     chsh -s /usr/bin/zsh root
 fi
-
-
-# Setup zim
-export ZIM_HOME=${HOME}/.zim
-zsh ${HOME}/.zim/zimfw.zsh install
 
 
 # Setup git
