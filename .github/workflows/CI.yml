@@ -23,6 +23,9 @@ jobs:
   linux:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: zsh
     strategy:
       matrix:
         container: ["ubuntu_mpich", "debian_mpich"]
@@ -41,6 +44,9 @@ jobs:
 
   macos:
     runs-on: macos-latest
+    defaults:
+      run:
+        shell: bash
     name: CI macOS
     steps:
       - name: Install yadm
