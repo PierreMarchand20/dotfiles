@@ -37,6 +37,13 @@ bindkey -e
 # Remove path separator from WORDCHARS.
 WORDCHARS=${WORDCHARS//[\/]}
 
+# -----------------
+# Zim configuration
+# -----------------
+
+# Use degit instead of git as the default tool to install and update modules.
+zstyle ':zim:zmodule' use 'degit'
+
 
 # --------------------
 # Module configuration
@@ -97,9 +104,17 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # ------------------
 # Initialize modules
 # ------------------
-
-if [[ ${ZIM_HOME}/init.zsh -ot ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
-  # Update static initialization script if it's outdated, before sourcing it
+ZIM_HOME=${ZDOTDIR:-${HOME}}/.zim
+if [[ ! -e ${ZIM_HOME}/zimfw.zsh ]]; then
+  # Download zimfw script if missing.
+  if (( ${+commands[curl]} )); then
+    curl -fsSL --create-dirs -o ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  else
+    mkdir -p ${ZIM_HOME} && wget -nv -O ${ZIM_HOME}/zimfw.zsh https://github.com/zimfw/zimfw/releases/latest/download/zimfw.zsh
+  fi
+fi
+if [[ ! ${ZIM_HOME}/init.zsh -nt ${ZDOTDIR:-${HOME}}/.zimrc ]]; then
+  # Install missing modules, and update ${ZIM_HOME}/init.zsh if missing or outdated.
   source ${ZIM_HOME}/zimfw.zsh init -q
 fi
 source ${ZIM_HOME}/init.zsh
@@ -131,12 +146,9 @@ bindkey -M vicmd 'j' history-substring-search-down
 
 
 ##### Personal options
-export PATH=$PATH:~/Partage/scientific_computing/FreeFem-sources-debug/src/mpi
-export PATH=$PATH:~/Partage/scientific_computing/FreeFem-sources-debug/src/nw
+export PATH=$PATH:~/Partage/scientific_computing/FreeFem-sources/src/mpi
+export PATH=$PATH:~/Partage/scientific_computing/FreeFem-sources/src/nw
 
-if [ -d /opt/intel/oneapi/ ]; then
-  source /opt/intel/oneapi/setvars.sh  >/dev/null
-fi
 # autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=241'
 
