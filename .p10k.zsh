@@ -160,6 +160,9 @@
   # their preceding commands.
   typeset -g POWERLEVEL9K_TIME_UPDATE_ON_COMMAND=false
 
+  # To allow shell integration in vscode
+  typeset -g POWERLEVEL9K_TERM_SHELL_INTEGRATION=true
+
   # Transient prompt works similarly to the builtin transient_rprompt option. It trims down prompt
   # when accepting a command line. Supported values:
   #
